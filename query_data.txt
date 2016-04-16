@@ -1,0 +1,6 @@
+www.baidu.com 2 3
+www.sohu.com 1 2
+www.google.com 5 4
+www.tecent.com 1 7
+www.tecent.com 3 6
+www.google.com 1 5
