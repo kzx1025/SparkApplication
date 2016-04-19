@@ -1,4 +1,6 @@
-/target/*
+/target/resolution-cache/
+/target/streams/
+/target/scala-2.10/*
+!/target/scala-2.10/sparkapplication_2.10-1.0.jar
 /out/
 /project/
-!/target/scala-2.10/sparkapplication_2.10-1.0.jar 
