@@ -39,48 +39,99 @@ object TianChiTwo {
     val songSchema = sqlContext.createDataFrame(song)
     songSchema.registerTempTable("song")
 
-    def toInt(s: String): Int = {
+    def toInt(s: Long): Int = {
       try {
         s.toInt
       } catch {
-        case e: Exception => 9999
+        case e: Exception => 0
       }
     }
+    sqlContext.udf.register("toInt",(time: Long)=>toInt(time))
 
+    def isVacation(time: String): Int={
+     val a = new java.text.SimpleDateFormat("yyyy MM-dd HH:mm:ss").format(new java.util.Date(time.toLong*1000))
+      println(a)
+      0
+    }
 
-    def havePlayTimes(userId:String,songId:String,ds:String): String={
-      val tempSql = "SELECT count(*) FROM sub_song WHERE actionType='1' " +
-        "and ds<="+ds
+    isVacation("1426406400")
+
+    def firstPlayTimes(userId:String,songId:String): String={
+      val tempSql = "SELECT ds FROM sub_song WHERE actionType='1' order by ds limit 1"
       val result = sqlContext.sql(tempSql)
       result.collect()(0).toString()
     }
 
-
-    val sqlString1 = "SELECT  * FROM user_action a  JOIN song b on a.songId=b.songId"
+    val writer = new PrintWriter(new File(args(3)))
      // "and a.userId='5e4d08ff6f217b64441e856509306f50' and a.songId='964dadbb0bea92365f25f6f411143206'"
    //[userId: string, songId: string, gmtCreate: string, actionType: string, ds: string,
    // songId: string, artistId: string, publishTime: string, songInitPlays: string, language: string, gender: string]
-    val allRecords = sqlContext.sql(sqlString1)
 
-    val sqlString2 = "SELECT userId FROM user_action group by userId"
-    val userRecords = sqlContext.sql(sqlString2)
-   // println(userRecords.collect().length)
-
-    val sqlString3 = "SELECT songId FROM song group by songId"
-    val songRecords = sqlContext.sql(sqlString3)
-    println(songRecords.collect().length)
-
-    val sqlString4 = "SELECT userId,songId,ds FROM user_action as a where ds=(SELECT ds From user_action as b where a.userId=b.userId and a.songId=b.songId order by ds limit 1)"
-    val firstDsRecords = sqlContext.sql(sqlString4)
+    val sqlString1 = "SELECT userId,songId,count(*) From user_action where ds<20150501 and actionType='1' group by userId,songId order by userId"
+    //val sqlString2 = "SELECT userId,songId,count(*)  From user_action a JOIN user_song b where a.userId=b.userId and a.songId=b.songId and a.ds<20150501 and a.actionType='1'"
+    val userSongRecords1 = sqlContext.sql(sqlString1)
 
 
+    val sqlString2 = "SELECT userId,songId,count(*) From user_action where ds<20150501 and actionType='2' group by userId,songId order by userId"
+    //val sqlString2 = "SELECT userId,songId,count(*)  From user_action a JOIN user_song b where a.userId=b.userId and a.songId=b.songId and a.ds<20150501 and a.actionType='1'"
+    val userSongRecords2 = sqlContext.sql(sqlString2)
+  //  userSongRecords2.registerTempTable("user_song_download")
+
+    val sqlString3 = "SELECT userId,songId,count(*) From user_action where ds<20150501 and actionType='3' group by userId,songId order by userId"
+    //val sqlString2 = "SELECT userId,songId,count(*)  From user_action a JOIN user_song b where a.userId=b.userId and a.songId=b.songId and a.ds<20150501 and a.actionType='1'"
+    val userSongRecords3 = sqlContext.sql(sqlString3)
+  //  userSongRecords3.registerTempTable("user_song_collect")
 
 
 
-    val writer = new PrintWriter(new File(args(3)))
-    for(firstDs <- firstDsRecords.collect()){
-      writer.write(firstDs.toString())
+    userSongRecords1.registerTempTable("user_song_play")
+    val sqlString4 = "select a.*,toInt(b.c2) From user_action a left join user_song_play b ON a.userId=b.userId and a.songId=b.songId where a.ds<20150510 and a.ds>=20150501"
+    val records4 = sqlContext.sql(sqlString4)
+    sqlContext.dropTempTable("user_song_play")
+    records4.registerTempTable("temp_table1")
+
+
+    userSongRecords2.registerTempTable("user_song_download")
+    val sqlString5 = "select a.*,toInt(b.c2) From temp_table1 a left join user_song_download b ON a.userId=b.userId and a.songId=b.songId where a.ds<20150510 and a.ds>=20150501"
+    val records5 = sqlContext.sql(sqlString5)
+    sqlContext.dropTempTable("user_song_download")
+    records5.registerTempTable("temp_table2")
+
+    userSongRecords3.registerTempTable("user_song_collect")
+    val sqlString6 = "select a.*,toInt(b.c2) From temp_table2 a left join user_song_collect b ON a.userId=b.userId and a.songId=b.songId where a.ds<20150510 and a.ds>=20150501"
+    val records6 = sqlContext.sql(sqlString6)
+    sqlContext.dropTempTable("user_song_collect")
+    records6.registerTempTable("user_times")
+
+  //  writer.write(records4.collect().length.toString)
+    for(record<- records5.collect()){
+      writer.write(record.toString())
+      writer.println()
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   /* for(record<-records4.collect()){
+      writer.write(record.toString())
+      writer.println()
+    }
+*/
+
 
 /*
     for(user <- userRecords.collect()) {
