@@ -17,7 +17,7 @@ object TianChi {
                   language: String, gender: String)
 
   def main(args: Array[String]): Unit ={
-    if(args.length<2){
+    if(args.length<3){
       System.err.println("Usage of Parameters: master userInput songInput outputPath")
       System.exit(1)
     }
@@ -94,7 +94,7 @@ object TianChi {
     val allDS = sqlContext.sql(sqlString2)
 
     //筛选出特定songId的子表
-    val sqlString3 = "SELECT * FROM user_action WHERE songId='7ec488fc483386cdada5448864e82990'"
+    val sqlString3 = "SELECT * FROM user_action a JOIN song b ON a.songId=b.songId WHERE b.artistId='8da51d03b8b8717431e8b902856fb45e'"
     val subSongTable = sqlContext.sql(sqlString3)
     subSongTable.registerTempTable("sub_song")
 
