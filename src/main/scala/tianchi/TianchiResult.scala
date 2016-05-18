@@ -39,7 +39,7 @@ object TianchiResult {
     }
 
     val testUserData = data3.map{line =>
-      val parts = line.split(",").map(_.toDouble)
+      val parts = line.split(",").map(_.toString)
       (parts(0),parts(1),parts(2))
     }
 
@@ -147,7 +147,7 @@ object TianchiResult {
     val writer = new PrintWriter(new File(args(5)))
     for(record <- resultData.asInstanceOf[RDD[_]].collect()) {
 
-      val tempRecord = record.asInstanceOf[(Double,(Double,Double,Double))]
+      val tempRecord = record.asInstanceOf[(Double,(String,String,String))]
       writer.write(tempRecord._1+","+tempRecord._2._1+","+tempRecord._2._2+","+tempRecord._2._3)
       writer.println()
 
