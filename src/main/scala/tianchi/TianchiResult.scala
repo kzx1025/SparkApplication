@@ -33,13 +33,13 @@ object TianchiResult {
 
 
     val rawTestData = data3.map{line =>
-      val parts = line.split(",").map(_.toDouble)
+      val parts = line.split(",").drop(3).map(_.toDouble)
 
-      LabeledPoint(parts(3), Vectors.dense(parts.slice(4, parts.length)))
+      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length)))
     }
 
     val testUserData = data3.map{line =>
-      val parts = line.split(",").map(_.toString)
+      val parts = line.split(",")
       (parts(0),parts(1),parts(2))
     }
 
