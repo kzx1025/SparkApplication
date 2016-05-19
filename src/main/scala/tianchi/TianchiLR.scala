@@ -17,8 +17,9 @@ import org.apache.spark.{SparkContext, SparkConf}
 object TianchiLR {
 
   def main(args: Array[String]): Unit = {
-    if (args.length < 3) {
-      System.err.println("Usage of Parameters: master positiveData negativeData model(1:LBFGS,2:SGD,3:DecisionTree) outputPath")
+    if (args.length < 7) {
+      System.err.println("Usage of Parameters: master positiveData1 positiveData2 negativeData1 negativeData2" +
+        " model(1:LBFGS,2:SGD,3:DecisionTree) outputPath")
       System.exit(1)
     }
     val sparkConf = new SparkConf()
@@ -29,9 +30,15 @@ object TianchiLR {
     val data1 = sc.textFile(args(1))
     val data2 = sc.textFile(args(2))
 
+    val data3 = sc.textFile(args(3))
+    val data4 = sc.textFile(args(4))
+
+    val dataA = data1 union data2
+    val dataB = data3 union data4
 
 
-    val positiveData = data1.map { line =>
+
+    val positiveData = dataA.map { line =>
 
       val parts = line.split(",").map(_.toDouble)
 
@@ -39,7 +46,7 @@ object TianchiLR {
 
     }
 
-    val negativeData = data2.map { line =>
+    val negativeData = dataB.map { line =>
 
       val parts = line.split(",").map(_.toDouble)
 
@@ -76,7 +83,7 @@ object TianchiLR {
     val testData = positiveSplits(1) union negativeSplits(1)
 
 
-    val choice = args(3).toInt
+    val choice = args(5).toInt
 
     val labelAndPreds = {
       if (choice == 1) {

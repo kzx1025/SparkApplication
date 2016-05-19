@@ -19,7 +19,7 @@ object TianchiResult {
 
   def main(args: Array[String]): Unit = {
     if (args.length < 5) {
-      System.err.println("Usage of Parameters: master positiveData negativeData testData model(1:LBFGS,2:SGD,3:DecisionTree) outputPath")
+      System.err.println("Usage of Parameters: master positiveData1 positiveData2 negativeData1 negativeData2 testData model(1:LBFGS,2:SGD,3:DecisionTree) outputPath")
       System.exit(1)
     }
     val sparkConf = new SparkConf()
@@ -29,22 +29,29 @@ object TianchiResult {
     val sc = new SparkContext(sparkConf)
     val data1 = sc.textFile(args(1))
     val data2 = sc.textFile(args(2))
+
     val data3 = sc.textFile(args(3))
+    val data4 = sc.textFile(args(4))
+
+    val dataA = data1 union data2
+    val dataB = data3 union data4
+
+    val data5 = sc.textFile(args(5))
 
 
-    val rawTestData = data3.map{line =>
-      val parts = line.split(",").drop(3).map(_.toDouble)
+    val rawTestData = data5.map{line =>
+      val parts = line.split(",").drop(4).map(_.toDouble)
 
       LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length)))
     }
 
-    val testUserData = data3.map{line =>
+    val testUserData = data5.map{line =>
       val parts = line.split(",")
-      (parts(0),parts(1),parts(2))
+      (parts(0),parts(1),parts(2),parts(3))
     }
 
 
-    val positiveData = data1.map { line =>
+    val positiveData = dataA.map { line =>
 
       val parts = line.split(",").map(_.toDouble)
 
@@ -52,7 +59,7 @@ object TianchiResult {
 
     }
 
-    val negativeData = data2.map { line =>
+    val negativeData = dataB.map { line =>
 
       val parts = line.split(",").map(_.toDouble)
 
@@ -90,7 +97,7 @@ object TianchiResult {
 
 
 
-    val choice = args(4).toInt
+    val choice = args(6).toInt
 
     val resultData = {
       if (choice == 1) {
@@ -144,11 +151,11 @@ object TianchiResult {
     }
 
 
-    val writer = new PrintWriter(new File(args(5)))
+    val writer = new PrintWriter(new File(args(7)))
     for(record <- resultData.asInstanceOf[RDD[_]].collect()) {
 
-      val tempRecord = record.asInstanceOf[(Double,(String,String,String))]
-      writer.write(tempRecord._1+","+tempRecord._2._1+","+tempRecord._2._2+","+tempRecord._2._3)
+      val tempRecord = record.asInstanceOf[(Double,(String,String,String,String))]
+      writer.write(tempRecord._1+","+tempRecord._2._1+","+tempRecord._2._2+","+tempRecord._2._3+","+tempRecord._2._4)
       writer.println()
 
     }
