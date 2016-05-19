@@ -19,7 +19,7 @@ object TianchiResult {
 
   def main(args: Array[String]): Unit = {
     if (args.length < 5) {
-      System.err.println("Usage of Parameters: master positiveData1 positiveData2 negativeData1 negativeData2 testData model(1:LBFGS,2:SGD,3:DecisionTree) outputPath result.txt")
+      System.err.println("Usage of Parameters: master positiveData1 positiveData2 negativeData1 negativeData2 testData model(1:LBFGS,2:SGD,3:DecisionTree) outputPath result.txt ,modelpath")
       System.exit(1)
     }
     val sparkConf = new SparkConf()
@@ -79,7 +79,7 @@ object TianchiResult {
 
     val finalData = allData.map(x => LabeledPoint(x.label, scaler2.transform(x.features)))
 
-    val finalTestData = rawTestData.map(x => LabeledPoint(x.label, scaler3.transform(x.features))).cache()
+    val finalTestData = rawTestData.map(x => LabeledPoint(x.label, scaler3.transform(x.features)))
 
 
     val finalPositiveData = finalData.filter(x => x.label==1)
@@ -109,6 +109,7 @@ object TianchiResult {
       if (choice == 1) {
         //逻辑回归 最大似然估计
         val model = new LogisticRegressionWithLBFGS().setNumClasses(2).run(trainingData)
+        model.save(sc,args(9))
         finalTestData.map { point =>
 
           val prediction = model.predict(point.features)
@@ -156,7 +157,7 @@ object TianchiResult {
       }
     }
 
-    val writer = new PrintWriter(new File(args(8)))
+/*    val writer = new PrintWriter(new File(args(8)))
     for(record <- resultData.asInstanceOf[RDD[_]].collect()) {
 
       val tempRecord = record.asInstanceOf[(Double,(String,String,String,String))]
@@ -169,7 +170,7 @@ object TianchiResult {
 
     resultData.asInstanceOf[RDD[(Double,(String,String,String,String))]].map{t=>
       t._1.toString+","+t._2._1+","+t._2._2+","+t._2._3+","+t._2._4
-    }.saveAsTextFile(args(7))
+    }.saveAsTextFile(args(7))*/
 
 
 
