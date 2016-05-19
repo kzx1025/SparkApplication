@@ -100,6 +100,9 @@ object TianchiResult {
 
     val trainingData = samplePositiveData union sampleNegativeData
 
+    finalTestData.take(100).foreach(println)
+    testUserData.take(100).foreach(println)
+
 
 
 
@@ -116,7 +119,7 @@ object TianchiResult {
 
           prediction
 
-        }
+        }.zip(testUserData)
 
       } else if (choice == 2) {
         //逻辑回归 梯度下降法
@@ -159,7 +162,7 @@ object TianchiResult {
 
     println(resultData.asInstanceOf[RDD[_]].count())
 
-   val writer = new PrintWriter(new File(args(8)))
+/*   val writer = new PrintWriter(new File(args(8)))
     for(record <- resultData.asInstanceOf[RDD[_]].collect()) {
 
       val tempRecord = record.asInstanceOf[(Double,(String,String,String,String))]
@@ -168,7 +171,7 @@ object TianchiResult {
 
     }
 
-    writer.close()
+    writer.close()*/
 /*
 
     resultData.asInstanceOf[RDD[(Double,(String,String,String,String))]].map{t=>
