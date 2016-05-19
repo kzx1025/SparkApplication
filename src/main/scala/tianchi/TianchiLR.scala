@@ -70,13 +70,12 @@ object TianchiLR {
    // val finalPositiveData = sc.parallelize(finalData.take(positiveDataNum.toInt))
     //val finalNegativeData = sc.parallelize(finalData.collect().drop(positiveDataNum.toInt))
 
-    println(finalPositiveData.count() + "," + finalNegativeData.count())
-
+    //println(finalPositiveData.count() + "," + finalNegativeData.count())
+    val fraction = finalPositiveData.count()/finalNegativeData.count()
 
     //负样本采样
-    //val samplePositiveData = sc.parallelize(finalPositiveData.takeSample(withReplacement = false, positiveDataNum.toInt, 42))
     val samplePositiveData = finalPositiveData
-    val sampleNegativeData = sc.parallelize(finalNegativeData.takeSample(withReplacement = false, positiveDataNum.toInt, 42))
+    val sampleNegativeData = finalNegativeData.sample(withReplacement = false,fraction,42L)
 
 
 

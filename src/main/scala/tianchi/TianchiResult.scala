@@ -19,7 +19,7 @@ object TianchiResult {
 
   def main(args: Array[String]): Unit = {
     if (args.length < 5) {
-      System.err.println("Usage of Parameters: master positiveData1 positiveData2 negativeData1 negativeData2 testData model(1:LBFGS,2:SGD,3:DecisionTree) outputPath")
+      System.err.println("Usage of Parameters: master positiveData1 positiveData2 negativeData1 negativeData2 testData model(1:LBFGS,2:SGD,3:DecisionTree) outputPath result.txt")
       System.exit(1)
     }
     val sparkConf = new SparkConf()
@@ -86,13 +86,15 @@ object TianchiResult {
     val finalNegativeData = finalData.filter(x => x.label==0)
     //val finalPositiveData = sc.parallelize(finalData.take(positiveDataNum.toInt))
     //val finalNegativeData = sc.parallelize(finalData.collect().drop(positiveDataNum.toInt))
-    println(finalPositiveData.count() + "," + finalNegativeData.count())
+    //println(finalPositiveData.count() + "," + finalNegativeData.count())
+    val fraction = finalPositiveData.count()/finalNegativeData.count()
 
 
     //正负样本采样
    // val samplePositiveData = sc.parallelize(finalPositiveData.takeSample(withReplacement = false, positiveDataNum.toInt, 42))
     val samplePositiveData = finalPositiveData
-    val sampleNegativeData = sc.parallelize(finalNegativeData.takeSample(withReplacement = false, positiveDataNum.toInt, 42))
+    val sampleNegativeData = finalNegativeData.sample(withReplacement = false,fraction,42L)
+    //val sampleNegativeData = sc.parallelize(finalNegativeData.takeSample(withReplacement = false, positiveDataNum.toInt, 42))
 
 
 
@@ -154,11 +156,7 @@ object TianchiResult {
       }
     }
 
-    resultData.asInstanceOf[RDD[(Double,(String,String,String,String))]].map{t=>
-      t._1+","+t._2._1+","+t._2._2+","+t._2._3+","+t._2._4
-    }.saveAsTextFile(args(7))
-
-/*    val writer = new PrintWriter(new File(args(7)))
+    val writer = new PrintWriter(new File(args(8)))
     for(record <- resultData.asInstanceOf[RDD[_]].collect()) {
 
       val tempRecord = record.asInstanceOf[(Double,(String,String,String,String))]
@@ -167,7 +165,13 @@ object TianchiResult {
 
     }
 
-    writer.close()*/
+    writer.close()
+
+    resultData.asInstanceOf[RDD[(Double,(String,String,String,String))]].map{t=>
+      t._1.toString+","+t._2._1+","+t._2._2+","+t._2._3+","+t._2._4
+    }.saveAsTextFile(args(7))
+
+
 
 
   }
