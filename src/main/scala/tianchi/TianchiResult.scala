@@ -160,7 +160,7 @@ object TianchiResult {
       }
     }
 
-    resultData.asInstanceOf[RDD[_]].take(30).foreach(println)
+    //resultData.asInstanceOf[RDD[_]].take(30).foreach(println)
 
 /*   val writer = new PrintWriter(new File(args(8)))
     for(record <- resultData.asInstanceOf[RDD[_]].collect()) {
@@ -172,12 +172,12 @@ object TianchiResult {
     }
 
     writer.close()*/
-/*
+
 
     resultData.asInstanceOf[RDD[(Double,(String,String,String,String))]].map{t=>
       t._1.toString+","+t._2._1+","+t._2._2+","+t._2._3+","+t._2._4
     }.saveAsTextFile(args(7))
-*/
+
 
 
 
