@@ -109,14 +109,14 @@ object TianchiResult {
       if (choice == 1) {
         //逻辑回归 最大似然估计
         val model = new LogisticRegressionWithLBFGS().setNumClasses(2).run(trainingData)
-        model.save(sc,args(9))
+       // model.save(sc,args(9))
         finalTestData.map { point =>
 
           val prediction = model.predict(point.features)
 
           prediction
 
-        }.zip(testUserData)
+        }
 
       } else if (choice == 2) {
         //逻辑回归 梯度下降法
