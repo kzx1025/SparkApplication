@@ -42,7 +42,7 @@ object TianchiResult {
     val rawTestData = data5.map{line =>
       val parts = line.split(",").drop(4).map(_.toDouble)
 
-      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length)))
+      LabeledPoint(parts(0), Vectors.dense(parts.slice(0, parts.length)))
     }
 
     val testUserData = data5.map{line =>
@@ -117,7 +117,7 @@ object TianchiResult {
 
           val prediction = model.predict(point.features)
 
-          (point.label,prediction)
+          prediction
 
         }.zip(testUserData)
 
