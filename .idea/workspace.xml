@@ -7,7 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a2405e3-7029-4d67-b8f8-caaa3cfd9aad" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/tianchi/TianchiResult.scala" afterPath="$PROJECT_DIR$/src/main/scala/tianchi/TianchiResult.scala" />
     </list>
     <ignored path="SparkApplication.iws" />
@@ -49,8 +48,8 @@
       <file leaf-file-name="TianchiResult.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiResult.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6367925">
-              <caret line="171" column="5" selection-start-line="171" selection-start-column="5" selection-end-line="171" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.26448363">
+              <caret line="103" column="5" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
               <folding>
                 <element signature="e#17#51#0" expanded="true" />
               </folding>
@@ -1184,12 +1183,12 @@
       <workItem from="1463388541902" duration="2339000" />
       <workItem from="1463452697033" duration="29453000" />
       <workItem from="1463579773954" duration="301000" />
-      <workItem from="1463585167476" duration="22028000" />
+      <workItem from="1463585167476" duration="22918000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="263963000" />
+    <option name="totallyTimeSpent" value="264853000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1754,8 +1753,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiResult.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6367925">
-          <caret line="171" column="5" selection-start-line="171" selection-start-column="5" selection-end-line="171" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.26448363">
+          <caret line="103" column="5" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
           <folding>
             <element signature="e#17#51#0" expanded="true" />
           </folding>

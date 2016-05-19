@@ -100,8 +100,8 @@ object TianchiResult {
 
     val trainingData = samplePositiveData union sampleNegativeData
 
-    finalTestData.take(100).foreach(println)
-    testUserData.take(100).foreach(println)
+    //finalTestData.take(100).foreach(println)
+   // testUserData.take(100).foreach(println)
 
 
 
@@ -117,7 +117,7 @@ object TianchiResult {
 
           val prediction = model.predict(point.features)
 
-          prediction
+          (point.label,prediction)
 
         }.zip(testUserData)
 
@@ -160,7 +160,7 @@ object TianchiResult {
       }
     }
 
-    println(resultData.asInstanceOf[RDD[_]].count())
+    resultData.asInstanceOf[RDD[_]].take(30).foreach(println)
 
 /*   val writer = new PrintWriter(new File(args(8)))
     for(record <- resultData.asInstanceOf[RDD[_]].collect()) {
