@@ -79,10 +79,13 @@ object TianchiResult {
 
     val finalData = allData.map(x => LabeledPoint(x.label, scaler2.transform(x.features)))
 
-    val finalTestData = rawTestData.map(x => LabeledPoint(x.label, scaler3.transform(x.features)))
+    val finalTestData = rawTestData.map(x => LabeledPoint(x.label, scaler3.transform(x.features))).cache()
 
-    val finalPositiveData = sc.parallelize(finalData.take(positiveDataNum.toInt))
-    val finalNegativeData = sc.parallelize(finalData.collect().drop(positiveDataNum.toInt))
+
+    val finalPositiveData = finalData.filter(x => x.label==1)
+    val finalNegativeData = finalData.filter(x => x.label==0)
+    //val finalPositiveData = sc.parallelize(finalData.take(positiveDataNum.toInt))
+    //val finalNegativeData = sc.parallelize(finalData.collect().drop(positiveDataNum.toInt))
     println(finalPositiveData.count() + "," + finalNegativeData.count())
 
 

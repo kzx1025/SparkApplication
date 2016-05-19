@@ -64,9 +64,12 @@ object TianchiLR {
     val scaler2 = scaler.fit(allData.map(x => x.features))
 
     val finalData = allData.map(x => LabeledPoint(x.label, scaler2.transform(x.features)))
+    val finalPositiveData = finalData.filter(x => x.label==1)
+    val finalNegativeData = finalData.filter(x => x.label==0)
 
-    val finalPositiveData = sc.parallelize(finalData.take(positiveDataNum.toInt))
-    val finalNegativeData = sc.parallelize(finalData.collect().drop(positiveDataNum.toInt))
+   // val finalPositiveData = sc.parallelize(finalData.take(positiveDataNum.toInt))
+    //val finalNegativeData = sc.parallelize(finalData.collect().drop(positiveDataNum.toInt))
+
     println(finalPositiveData.count() + "," + finalNegativeData.count())
 
 
