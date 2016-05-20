@@ -178,8 +178,8 @@ object TianchiResult {
       t._1.toString+","+t._2._1+","+t._2._2+","+t._2._3+","+t._2._4
     }.saveAsTextFile(args(7))
 
-    println(sampleNegativeData.count())
-    println(samplePositiveData.count())
+    println("finalnegative:"+sampleNegativeData.count())
+    println("finalpositive:"+samplePositiveData.count())
 
 
 
