@@ -19,7 +19,8 @@ object TianchiResult {
 
   def main(args: Array[String]): Unit = {
     if (args.length < 5) {
-      System.err.println("Usage of Parameters: master positiveData1 positiveData2 negativeData1 negativeData2 testData model(1:LBFGS,2:SGD,3:DecisionTree) outputPath result.txt ,modelpath")
+      System.err.println("Usage of Parameters: master positiveData1 positiveData2 negativeData1 negativeData2 testData " +
+        "model(1:LBFGS,2:SGD,3:DecisionTree) outputPath fraction")
       System.exit(1)
     }
     val sparkConf = new SparkConf()
@@ -94,7 +95,7 @@ object TianchiResult {
    // val positiveDataNum = finalPositiveData.count()
    // val samplePositiveData = sc.parallelize(finalPositiveData.takeSample(withReplacement = false, positiveDataNum.toInt, 42))
     val samplePositiveData = finalPositiveData
-    val sampleNegativeData = finalNegativeData.sample(withReplacement = false,fraction*2,42L)
+    val sampleNegativeData = finalNegativeData.sample(withReplacement = false,fraction*(args(8).toInt),42L)
    // val sampleNegativeData = sc.parallelize(finalNegativeData.takeSample(withReplacement = false, positiveDataNum.toInt*5, 42))
 
 
