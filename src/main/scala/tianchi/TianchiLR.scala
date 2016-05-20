@@ -19,7 +19,7 @@ object TianchiLR {
   def main(args: Array[String]): Unit = {
     if (args.length < 7) {
       System.err.println("Usage of Parameters: master positiveData1 positiveData2 negativeData1 negativeData2" +
-        " model(1:LBFGS,2:SGD,3:DecisionTree) outputPath")
+        " model(1:LBFGS,2:SGD,3:DecisionTree) fraction")
       System.exit(1)
     }
     val sparkConf = new SparkConf()
@@ -56,8 +56,8 @@ object TianchiLR {
 
     val allData = positiveData union negativeData
 
-    val positiveDataNum = positiveData.count()
-    val negativeDataNum = negativeData.count()
+   // val positiveDataNum = positiveData.count()
+    //val negativeDataNum = negativeData.count()
 
     //标准正规化处理
     val scaler = new StandardScaler(withMean = true, withStd = true)
@@ -67,15 +67,12 @@ object TianchiLR {
     val finalPositiveData = finalData.filter(x => x.label==1)
     val finalNegativeData = finalData.filter(x => x.label==0)
 
-   // val finalPositiveData = sc.parallelize(finalData.take(positiveDataNum.toInt))
-    //val finalNegativeData = sc.parallelize(finalData.collect().drop(positiveDataNum.toInt))
 
-    //println(finalPositiveData.count() + "," + finalNegativeData.count())
-    val fraction = finalPositiveData.count()/finalNegativeData.count()
+    val fraction = finalPositiveData.count().toDouble/finalNegativeData.count().toDouble
 
     //负样本采样
     val samplePositiveData = finalPositiveData
-    val sampleNegativeData = finalNegativeData.sample(withReplacement = false,fraction,42L)
+    val sampleNegativeData = finalNegativeData.sample(withReplacement = false,fraction*(args(6).toInt),42L)
 
 
 
