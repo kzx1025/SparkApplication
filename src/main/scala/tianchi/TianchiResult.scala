@@ -69,8 +69,8 @@ object TianchiResult {
 
     val allData = positiveData union negativeData
 
-    val positiveDataNum = positiveData.count()
-    val negativeDataNum = negativeData.count()
+   // val positiveDataNum = positiveData.count()
+     // val negativeDataNum = negativeData.count()
 
     //标准正规化处理
     val scaler = new StandardScaler(withMean = true, withStd = true)
@@ -102,8 +102,6 @@ object TianchiResult {
 
     //finalTestData.take(100).foreach(println)
    // testUserData.take(100).foreach(println)
-    println(sampleNegativeData.count())
-    println(samplePositiveData.count())
 
 
 
@@ -179,6 +177,10 @@ object TianchiResult {
     resultData.asInstanceOf[RDD[(Double,(String,String,String,String))]].map{t=>
       t._1.toString+","+t._2._1+","+t._2._2+","+t._2._3+","+t._2._4
     }.saveAsTextFile(args(7))
+
+    println(sampleNegativeData.count())
+    println(samplePositiveData.count())
+
 
 
 
