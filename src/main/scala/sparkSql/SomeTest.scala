@@ -7,13 +7,8 @@ import scala.collection.mutable.Queue
   */
 object SomeTest {
   def main(args: Array[String]): Unit ={
-    val downloadQueue = Queue[Int]()
-    downloadQueue.enqueue(1)
-    downloadQueue.enqueue(3)
-    downloadQueue.enqueue(5)
-    downloadQueue.enqueue(2)
-    val x = downloadQueue.dequeue
-    val y = downloadQueue.dequeue
+    val a = (121.toDouble/204356000.toDouble)
+    println(a)
   }
 
 }
