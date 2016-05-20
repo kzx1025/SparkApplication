@@ -93,7 +93,7 @@ object TianchiResult {
     //正负样本采样
    // val samplePositiveData = sc.parallelize(finalPositiveData.takeSample(withReplacement = false, positiveDataNum.toInt, 42))
     val samplePositiveData = finalPositiveData
-    val sampleNegativeData = finalNegativeData.sample(withReplacement = false,fraction,42L)
+    val sampleNegativeData = finalNegativeData.sample(withReplacement = false,fraction*5,42L)
     //val sampleNegativeData = sc.parallelize(finalNegativeData.takeSample(withReplacement = false, positiveDataNum.toInt, 42))
 
 
@@ -102,6 +102,8 @@ object TianchiResult {
 
     //finalTestData.take(100).foreach(println)
    // testUserData.take(100).foreach(println)
+    println(sampleNegativeData.count())
+    println(samplePositiveData.count())
 
 
 
