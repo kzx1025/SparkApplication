@@ -7,7 +7,8 @@ import org.apache.spark.mllib.feature.StandardScaler
 import org.apache.spark.mllib.linalg.Vectors
 import org.apache.spark.mllib.optimization.L1Updater
 import org.apache.spark.mllib.regression._
-import org.apache.spark.mllib.tree.{RandomForest, DecisionTree}
+import org.apache.spark.mllib.tree.configuration.BoostingStrategy
+import org.apache.spark.mllib.tree.{GradientBoostedTrees, RandomForest, DecisionTree}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkContext, SparkConf}
 
@@ -27,7 +28,7 @@ object TianchiLinear {
     //.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
     val sc = new SparkContext(sparkConf)
     val data1 = sc.textFile(args(1))
-   // val data2 = sc.textFile(args(2))
+    // val data2 = sc.textFile(args(2))
     val data2 = null
 
 
@@ -43,9 +44,9 @@ object TianchiLinear {
     }
 
 
-    val artistInfo = data5.map{ line =>
+    val artistInfo = data5.map { line =>
       val parts = line.split(",")
-      (parts(0),parts(1))
+      (parts(0), parts(1))
     }
 
 
@@ -87,25 +88,54 @@ object TianchiLinear {
 
     val resultData = {
       if (choice == 1) {
-        //线性回归
+        //线性回归1
         val numIterations = 2000
-        val stepSize = 0.1
-        val model = LinearRegressionWithSGD.train(trainingData, numIterations, stepSize)
+        val stepSize = 0.00000001
+        val model = LinearRegressionWithSGD.train(trainingData, numIterations)
         // model.save(sc,args(9))
         finalTestData.map { point =>
 
           val prediction = model.predict(point.features)
 
-          (prediction,point.label)
+          (prediction, point.label)
 
         }.zip(artistInfo)
 
       } else if (choice == 2) {
+        //线性回归2
+        val numIterations = 2000
+        val stepSize = 0.1
+        val model = LassoWithSGD.train(trainingData, numIterations)
+
+
+        finalTestData.map { point =>
+
+          val prediction = model.predict(point.features)
+
+          (prediction, point.label)
+
+        }.zip(artistInfo)
+
+      } else if (choice == 3) {
+        //线性回归3
+        val numIterations = 2000
+        val stepSize = 0.1
+        val model = RidgeRegressionWithSGD.train(trainingData, numIterations)
+
+        finalTestData.map { point =>
+
+          val prediction = model.predict(point.features)
+          (prediction, point.label)
+
+        }.zip(artistInfo)
+
+      }
+      else if (choice == 4) {
         //决策树
         val categoricalFeaturesInfo = Map[Int, Int]()
         val impurity = "variance"
-        val maxDepth = 5
-        val maxBins = 32
+        val maxDepth = 10
+        val maxBins = 64
 
         val model = DecisionTree.trainRegressor(trainingData, categoricalFeaturesInfo, impurity,
 
@@ -114,47 +144,54 @@ object TianchiLinear {
         finalTestData.map { point =>
 
           val prediction = model.predict(point.features)
-
-          (prediction,point.label)
+          (prediction, point.label)
 
         }.zip(artistInfo)
 
-      } else if (choice == 3) {
-        //线性回归
-        val numIterations = 2000
-        val stepSize = 0.1
-        val model = RidgeRegressionWithSGD.train(trainingData,numIterations)
+      } else if (choice == 5) {
+        //随机森林
+        val categoricalFeaturesInfo = Map[Int, Int]()
+        val numTrees = 4 // Use more in practice.
+        val featureSubsetStrategy = "auto" // Let the algorithm choose.
+        val impurity = "variance"
+        val maxDepth = 8
+        val maxBins = 50
+        val model = RandomForest.trainRegressor(trainingData, categoricalFeaturesInfo,
+          numTrees, featureSubsetStrategy, impurity, maxDepth, maxBins)
 
         finalTestData.map { point =>
 
           val prediction = model.predict(point.features)
-          (prediction,point.label)
+          (prediction, point.label)
 
         }.zip(artistInfo)
 
       }
-      else if (choice == 4) {
-        //线性回归
-        val numIterations = 2000
-        val stepSize = 0.1
-        val model = LassoWithSGD.train(trainingData,numIterations)
+      else if (choice == 6) {
+        //梯度提升树
+        val boostingStrategy = BoostingStrategy.defaultParams("Regression")
+        boostingStrategy.setNumIterations(50)
+        boostingStrategy.getTreeStrategy.setMaxDepth(20)
+        boostingStrategy.getTreeStrategy.setCategoricalFeaturesInfo(Map[Int, Int]())
+
+        val model = GradientBoostedTrees.train(trainingData, boostingStrategy)
 
         finalTestData.map { point =>
 
           val prediction = model.predict(point.features)
-          (prediction,point.label)
+          (prediction, point.label)
 
         }.zip(artistInfo)
 
       }
+
     }
 
 
 
 
 
-
-    val evaluateData = resultData.asInstanceOf[RDD[((Double,Double), (String, String))]]
+    val evaluateData = resultData.asInstanceOf[RDD[((Double, Double), (String, String))]]
       .map(t => ((t._2._2, t._2._1), (t._1._2, t._1._1)))
 
     evaluateData.saveAsTextFile(args(5))
@@ -174,8 +211,8 @@ object TianchiLinear {
     val artistWeight = evaluateData.map { t => (t._1._1, t._2._1) }.reduceByKey(_ + _).map(t => (t._1, Math.sqrt(t._2)))
 
     artistWeight.collect().foreach(println)
-    val scores = artistWeight.zip(fangcha).filter(t => t._1._1==t._2._1).map(t =>(t._1._1,t._1._2*(1.0-t._2._2)))
-      .map(t => (1,t._2)).reduceByKey(_+_)
+    val scores = artistWeight.zip(fangcha).filter(t => t._1._1 == t._2._1).map(t => (t._1._1, t._1._2 * (1.0 - t._2._2)))
+      .map(t => (1, t._2)).reduceByKey(_ + _)
 
     scores.collect().foreach(println)
 
