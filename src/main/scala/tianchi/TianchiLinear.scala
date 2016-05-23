@@ -81,6 +81,7 @@ object TianchiLinear {
     val trainingData = finalData
 
     trainingData.collect().foreach(println)
+    finalTestData.collect().foreach(println)
 
     //finalTestData.take(100).foreach(println)
     // testUserData.take(100).foreach(println)
@@ -92,7 +93,7 @@ object TianchiLinear {
       if (choice == 1) {
         //线性回归
         val numIterations = 2000
-        val stepSize = 0.001
+        val stepSize = 0.01
         val model = LinearRegressionWithSGD.train(trainingData, numIterations, stepSize)
         // model.save(sc,args(9))
         finalTestData.map { point =>
@@ -154,9 +155,11 @@ object TianchiLinear {
     evaluateData.saveAsTextFile(args(5))
 
     val days = evaluateData.map { t => (t._1._2, 1) }.reduceByKey(_ + _).count()
+
     //(歌手,日期,实际播放数,预测值)
     val tempValue = evaluateData.map { t => (t._1._1, Math.pow((t._2._2 - t._2._1) / t._2._1, 2.0)) }.reduceByKey(_ + _)
-    tempValue.collect().foreach(println)
+    val tempValue2 = evaluateData.map { t => (t._1._1, Math.pow((t._2._2 - t._2._1) / t._2._1, 2.0)) }
+    tempValue2.collect().foreach(println)
 
     //(歌手 方差)
     val fangcha = tempValue.map(t => (t._1, Math.sqrt(t._2 / days)))
