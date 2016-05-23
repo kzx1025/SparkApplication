@@ -80,6 +80,8 @@ object TianchiLinear {
 
     val trainingData = finalData
 
+    trainingData.collect().foreach(println)
+
     //finalTestData.take(100).foreach(println)
     // testUserData.take(100).foreach(println)
 
@@ -89,8 +91,8 @@ object TianchiLinear {
     val resultData = {
       if (choice == 1) {
         //线性回归
-        val numIterations = 100
-        val stepSize = 0.00000001
+        val numIterations = 200
+        val stepSize = 0.000001
         val model = LinearRegressionWithSGD.train(trainingData, numIterations, stepSize)
         // model.save(sc,args(9))
         finalTestData.map { point =>
@@ -146,7 +148,7 @@ object TianchiLinear {
 
 
     val evaluateData = resultData.asInstanceOf[RDD[(Double, (String, String))]].map { t =>
-      (t._2._1, t._2._1, t._1)
+      (t._2._1, t._2._2, t._1)
     }.zip(realPlayData).map(t => ((t._1._2, t._1._1), (t._2, t._1._3)))
 
     evaluateData.saveAsTextFile(args(5))
