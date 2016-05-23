@@ -172,7 +172,7 @@ object TianchiLinear {
         val boostingStrategy = BoostingStrategy.defaultParams("Regression")
         boostingStrategy.setNumIterations(50)
         boostingStrategy.getTreeStrategy.setMaxDepth(20)
-        boostingStrategy.getTreeStrategy.setCategoricalFeaturesInfo(Map[Int, Int]())
+        //boostingStrategy.getTreeStrategy.setCategoricalFeaturesInfo(Map[Int, Int]())
 
         val model = GradientBoostedTrees.train(trainingData, boostingStrategy)
 
