@@ -184,6 +184,13 @@ object TianchiResult {
     println("finalpositive:"+samplePositiveData.count())
     println("finalTestdata"+finalTestData.count())
 
+    resultData.asInstanceOf[RDD[(Double,(String,String,String,String))]].map{t =>
+      ((t._2._3,t._2._4),t._1)
+    }.reduceByKey(_+_)
+
+
+
+
 
 
   }
