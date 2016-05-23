@@ -39,7 +39,7 @@ object TianchiLinear {
     val rawTestData = data5.map { line =>
       val parts = line.split(",").drop(2).map(_.toDouble)
 
-      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length)))
+      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, 3)))
     }
 
 
@@ -53,7 +53,7 @@ object TianchiLinear {
 
       val parts = line.split(",").drop(2).map(_.toDouble)
 
-      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length)))
+      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, 3)))
 
     }
 
@@ -90,9 +90,9 @@ object TianchiLinear {
         //线性回归
         val numIterations = 2000
         val stepSize = 0.1
-        val model = LinearRegressionWithSGD.train(allData, numIterations, stepSize)
+        val model = LinearRegressionWithSGD.train(trainingData, numIterations, stepSize)
         // model.save(sc,args(9))
-        rawTestData.map { point =>
+        finalTestData.map { point =>
 
           val prediction = model.predict(point.features)
 

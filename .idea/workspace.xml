@@ -7,6 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a2405e3-7029-4d67-b8f8-caaa3cfd9aad" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala" afterPath="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala" />
     </list>
     <ignored path="SparkApplication.iws" />
@@ -58,8 +59,8 @@
       <file leaf-file-name="TianchiLinear.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7206573">
-              <caret line="92" column="53" selection-start-line="92" selection-start-column="53" selection-end-line="92" selection-end-column="53" />
+            <state vertical-scroll-proportion="-3.1197183">
+              <caret line="55" column="59" selection-start-line="55" selection-start-column="59" selection-end-line="55" selection-end-column="59" />
               <folding>
                 <element signature="e#17#51#0" expanded="true" />
               </folding>
@@ -1178,12 +1179,12 @@
       <workItem from="1463452697033" duration="29453000" />
       <workItem from="1463579773954" duration="301000" />
       <workItem from="1463585167476" duration="34112000" />
-      <workItem from="1463990358385" duration="9384000" />
+      <workItem from="1463990358385" duration="10100000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="285431000" />
+    <option name="totallyTimeSpent" value="286147000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1360,13 +1361,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/paper/spark-1.6.1/mllib/src/main/scala/org/apache/spark/mllib/feature/StandardScaler.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.982906">
-          <caret line="65" column="2" selection-start-line="65" selection-start-column="2" selection-end-line="65" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/paper/spark-1.6.1/assembly/target/scala-2.10/spark-assembly-1.6.1-hadoop2.2.0.jar!/org/apache/spark/mllib/classification/LogisticRegressionWithSGD.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.066815145">
@@ -1751,10 +1745,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.apache.spark/spark-mllib_2.10/srcs/spark-mllib_2.10-1.6.1-sources.jar!/org/apache/spark/mllib/regression/LinearRegression.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75586855">
+          <caret line="176" column="60" selection-start-line="176" selection-start-column="60" selection-end-line="176" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7206573">
-          <caret line="92" column="53" selection-start-line="92" selection-start-column="53" selection-end-line="92" selection-end-column="53" />
+        <state vertical-scroll-proportion="-3.1197183">
+          <caret line="55" column="59" selection-start-line="55" selection-start-column="59" selection-end-line="55" selection-end-column="59" />
           <folding>
             <element signature="e#17#51#0" expanded="true" />
           </folding>
