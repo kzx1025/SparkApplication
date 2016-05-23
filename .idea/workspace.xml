@@ -59,8 +59,8 @@
       <file leaf-file-name="TianchiLinear.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36619717">
-              <caret line="91" column="29" selection-start-line="91" selection-start-column="29" selection-end-line="91" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.5070422">
+              <caret line="91" column="31" selection-start-line="91" selection-start-column="31" selection-end-line="91" selection-end-column="31" />
               <folding>
                 <element signature="e#17#51#0" expanded="true" />
               </folding>
@@ -1179,12 +1179,12 @@
       <workItem from="1463452697033" duration="29453000" />
       <workItem from="1463579773954" duration="301000" />
       <workItem from="1463585167476" duration="34112000" />
-      <workItem from="1463990358385" duration="8910000" />
+      <workItem from="1463990358385" duration="9053000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="284957000" />
+    <option name="totallyTimeSpent" value="285100000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1754,8 +1754,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36619717">
-          <caret line="91" column="29" selection-start-line="91" selection-start-column="29" selection-end-line="91" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.5070422">
+          <caret line="91" column="31" selection-start-line="91" selection-start-column="31" selection-end-line="91" selection-end-column="31" />
           <folding>
             <element signature="e#17#51#0" expanded="true" />
           </folding>
