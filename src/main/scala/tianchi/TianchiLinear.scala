@@ -6,8 +6,8 @@ import org.apache.spark.mllib.classification.{LogisticRegressionWithSGD, Logisti
 import org.apache.spark.mllib.feature.StandardScaler
 import org.apache.spark.mllib.linalg.Vectors
 import org.apache.spark.mllib.optimization.L1Updater
-import org.apache.spark.mllib.regression.{GeneralizedLinearModel, LinearRegressionWithSGD, LabeledPoint}
-import org.apache.spark.mllib.tree.DecisionTree
+import org.apache.spark.mllib.regression._
+import org.apache.spark.mllib.tree.{RandomForest, DecisionTree}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkContext, SparkConf}
 
@@ -101,13 +101,15 @@ object TianchiLinear {
         }.zip(artistInfo)
 
       } else if (choice == 2) {
-        //逻辑回归 梯度下降法
-        val numIterations = 20000
-        val stepSize = 0.01
-        val lrWithSGD = new LogisticRegressionWithSGD()
-        lrWithSGD.optimizer.setNumIterations(numIterations)
-          .setStepSize(stepSize).setUpdater(new L1Updater())
-        val model = lrWithSGD.run(trainingData)
+        //决策树
+        val categoricalFeaturesInfo = Map[Int, Int]()
+        val impurity = "variance"
+        val maxDepth = 5
+        val maxBins = 32
+
+        val model = DecisionTree.trainRegressor(trainingData, categoricalFeaturesInfo, impurity,
+
+          maxDepth, maxBins)
 
         finalTestData.map { point =>
 
@@ -118,16 +120,24 @@ object TianchiLinear {
         }.zip(artistInfo)
 
       } else if (choice == 3) {
-        val numClasses = 2
-        val categoricalFeaturesInfo = Map[Int, Int]()
-        val impurity = "gini"
-        val maxDepth = 5
-        val maxBins = 32
+        //线性回归
+        val numIterations = 2000
+        val stepSize = 0.1
+        val model = RidgeRegressionWithSGD.train(trainingData,numIterations)
 
-        //决策树
-        val model = DecisionTree.trainClassifier(trainingData, numClasses, categoricalFeaturesInfo,
-          impurity, maxDepth, maxBins)
+        finalTestData.map { point =>
 
+          val prediction = model.predict(point.features)
+          (prediction,point.label)
+
+        }.zip(artistInfo)
+
+      }
+      else if (choice == 4) {
+        //线性回归
+        val numIterations = 2000
+        val stepSize = 0.1
+        val model = LassoWithSGD.train(trainingData,numIterations)
 
         finalTestData.map { point =>
 
