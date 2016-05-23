@@ -17,7 +17,7 @@ import org.apache.spark.{SparkContext, SparkConf}
 object TianchiLinear {
   def main(args: Array[String]): Unit = {
     if (args.length < 5) {
-      System.err.println("Usage of Parameters: master positiveData1  testData " +
+      System.err.println("Usage of Parameters: master positiveData1 positve testData " +
         "model(1:LBFGS,2:SGD,3:DecisionTree) outputPath ")
       System.exit(1)
     }
