@@ -19,7 +19,7 @@ object TianchiLinear {
   def main(args: Array[String]): Unit = {
     if (args.length < 5) {
       System.err.println("Usage of Parameters: master positiveData1 positve testData " +
-        "model(1:LBFGS,2:SGD,3:DecisionTree) outputPath ")
+        "model(1:LBFGS,2:SGD,3:DecisionTree) outputPath localpath")
       System.exit(1)
     }
     val sparkConf = new SparkConf()
@@ -191,10 +191,18 @@ object TianchiLinear {
 
 
 
+
+
     val evaluateData = resultData.asInstanceOf[RDD[((Double, Double), (String, String))]]
       .map(t => ((t._2._2, t._2._1), (t._1._2, t._1._1)))
-
     evaluateData.saveAsTextFile(args(5))
+    val writer = new PrintWriter(new File(args(5)))
+    for(record <- evaluateData.collect()){
+      writer.write(record.toString())
+      writer.println()
+    }
+
+    writer.close()
 
     val days = evaluateData.map { t => (t._1._2, 1) }.reduceByKey(_ + _).count()
 
