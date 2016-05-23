@@ -90,9 +90,9 @@ object TianchiLinear {
         //线性回归
         val numIterations = 2000
         val stepSize = 0.1
-        val model = LinearRegressionWithSGD.train(trainingData, numIterations, stepSize)
+        val model = LinearRegressionWithSGD.train(finalData, numIterations, stepSize)
         // model.save(sc,args(9))
-        finalTestData.map { point =>
+        rawTestData.map { point =>
 
           val prediction = model.predict(point.features)
 
