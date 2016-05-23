@@ -190,7 +190,7 @@ object TianchiLinearResult {
     val evaluateData = resultData.asInstanceOf[RDD[(Double, (String, String))]]
       .map(t => t._2._2+","+ t._2._1+","+t._1 )
 
-    val writer = new PrintWriter(new File(args(3)))
+    val writer = new PrintWriter(new File(args(5)))
     for(record <- evaluateData.collect()){
       writer.write(record)
       writer.println()
