@@ -103,7 +103,7 @@ object TianchiLinear {
       } else if (choice == 2) {
         //逻辑回归 梯度下降法
         val numIterations = 20000
-        val stepSize = 0.00001
+        val stepSize = 0.01
         val lrWithSGD = new LogisticRegressionWithSGD()
         lrWithSGD.optimizer.setNumIterations(numIterations)
           .setStepSize(stepSize).setUpdater(new L1Updater())
