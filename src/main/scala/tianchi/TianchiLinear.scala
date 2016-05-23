@@ -37,15 +37,11 @@ object TianchiLinear {
 
 
     val rawTestData = data5.map { line =>
-      val parts = line.split(",").drop(3).map(_.toDouble)
+      val parts = line.split(",").drop(2).map(_.toDouble)
 
-      LabeledPoint(parts(0), Vectors.dense(parts.slice(0, parts.length)))
+      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length)))
     }
 
-    val realPlayData = data5.map { line =>
-      val parts = line.split(",")
-      parts(2).toDouble
-    }
 
     val artistInfo = data5.map{ line =>
       val parts = line.split(",")
@@ -100,7 +96,7 @@ object TianchiLinear {
 
           val prediction = model.predict(point.features)
 
-          prediction
+          (prediction,point.label)
 
         }.zip(artistInfo)
 
@@ -117,7 +113,7 @@ object TianchiLinear {
 
           val prediction = model.predict(point.features)
 
-          prediction
+          (prediction,point.label)
 
         }.zip(artistInfo)
 
@@ -136,7 +132,7 @@ object TianchiLinear {
         finalTestData.map { point =>
 
           val prediction = model.predict(point.features)
-          prediction
+          (prediction,point.label)
 
         }.zip(artistInfo)
 
@@ -148,9 +144,8 @@ object TianchiLinear {
 
 
 
-    val evaluateData = resultData.asInstanceOf[RDD[(Double, (String, String))]].map { t =>
-      (t._2._1, t._2._2, t._1)
-    }.zip(realPlayData).map(t => ((t._1._2, t._1._1), (t._2, t._1._3)))
+    val evaluateData = resultData.asInstanceOf[RDD[((Double,Double), (String, String))]]
+      .map(t => ((t._2._2, t._2._1), (t._1._2, t._1._1)))
 
     evaluateData.saveAsTextFile(args(5))
 
