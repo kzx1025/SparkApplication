@@ -206,7 +206,7 @@ object TianchiLinear {
     val tempValue = evaluateData.map { t => (t._1._1, Math.pow((t._2._2 - t._2._1) / t._2._1, 2.0)) }.reduceByKey(_ + _)
    // val tempValue2 = evaluateData.map { t => (t._1._1, Math.pow((t._2._2 - t._2._1) / t._2._1, 2.0)) }
     val evaluateRDD = evaluateData.filter{t => Math.pow((t._2._2 - t._2._1) / t._2._1, 2.0)>=1}.map{t =>
-      t._1._1+","+t._2._1+","+","+(t._2._2-t._2._1)+","+t._2._1
+      t._1._1+","+t._1._2+","+t._2._1+","+(t._2._2-t._2._1)+","+t._2._1
     }
 
     val writer = new PrintWriter(new File(args(7)))
