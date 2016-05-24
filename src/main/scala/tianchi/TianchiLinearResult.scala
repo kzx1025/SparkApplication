@@ -17,7 +17,7 @@ object TianchiLinearResult {
   def main(args: Array[String]): Unit = {
     if (args.length < 5) {
       System.err.println("Usage of Parameters: master positiveData1  positveData2 testData " +
-        "model(1:LBFGS,2:SGD,3:DecisionTree) outputPath ")
+        "model(1:LBFGS,2:SGD,3:DecisionTree) feature_out outputPath ")
       System.exit(1)
     }
     val sparkConf = new SparkConf()
@@ -38,7 +38,7 @@ object TianchiLinearResult {
     val rawTestData = data5.map { line =>
       val parts = line.split(",").drop(2).map(_.toDouble)
 
-      LabeledPoint(parts(0), Vectors.dense(parts.slice(0, parts.length-2)))
+      LabeledPoint(parts(0), Vectors.dense(parts.slice(0, parts.length-args(5).toInt)))
     }
 
 
@@ -52,7 +52,7 @@ object TianchiLinearResult {
 
       val parts = line.split(",").drop(2).map(_.toDouble)
 
-      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length-2)))
+      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length-args(5).toInt)))
 
     }
 
@@ -190,7 +190,7 @@ object TianchiLinearResult {
     val evaluateData = resultData.asInstanceOf[RDD[(Int, (String, String))]]
       .map(t => t._2._2+","+ t._1+","+t._2._1 )
 
-    val writer = new PrintWriter(new File(args(5)))
+    val writer = new PrintWriter(new File(args(6)))
     for(record <- evaluateData.collect()){
       writer.write(record)
       writer.println()
