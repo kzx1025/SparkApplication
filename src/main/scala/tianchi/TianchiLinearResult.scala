@@ -38,7 +38,7 @@ object TianchiLinearResult {
     val rawTestData = data5.map { line =>
       val parts = line.split(",").drop(2).map(_.toDouble)
 
-      LabeledPoint(parts(0), Vectors.dense(parts.slice(0, parts.length)))
+      LabeledPoint(parts(0), Vectors.dense(parts.slice(0, parts.length-2)))
     }
 
 
@@ -52,7 +52,7 @@ object TianchiLinearResult {
 
       val parts = line.split(",").drop(2).map(_.toDouble)
 
-      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length)))
+      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length-2)))
 
     }
 
