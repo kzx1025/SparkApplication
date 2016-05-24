@@ -193,7 +193,7 @@ object TianchiLinear {
 
 
 
-    val evaluateData = resultData.asInstanceOf[RDD[((Int, Int), (String, String))]]
+    val evaluateData = resultData.asInstanceOf[RDD[((Int, Double), (String, String))]]
       .map(t => ((t._2._2, t._2._1), (t._1._2, t._1._1)))
     evaluateData.saveAsTextFile(args(5))
     val writer = new PrintWriter(new File(args(6)))
