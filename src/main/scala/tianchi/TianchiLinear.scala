@@ -19,7 +19,7 @@ object TianchiLinear {
   def main(args: Array[String]): Unit = {
     if (args.length < 5) {
       System.err.println("Usage of Parameters: master positiveData1 positve testData " +
-        "model(1:LBFGS,2:SGD,3:DecisionTree)feature_out outputPath")
+        "model(1:LBFGS,2:SGD,3:DecisionTree)feature_out outputPath fangcha")
       System.exit(1)
     }
     val sparkConf = new SparkConf()
@@ -40,8 +40,8 @@ object TianchiLinear {
     val rawTestData = data5.map { line =>
       val parts = line.split(",").drop(2).map(_.toDouble)
 
-      //LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length-args(5).toInt)))
-      LabeledPoint(parts(0), Vectors.dense(parts.slice(1,args(5).toInt-1)++parts.slice(args(5).toInt+1,parts.length)))
+      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length-args(5).toInt)))
+      //LabeledPoint(parts(0), Vectors.dense(parts.slice(1,args(5).toInt-1)++parts.slice(args(5).toInt+1,parts.length)))
     }
 
 
@@ -55,8 +55,8 @@ object TianchiLinear {
 
       val parts = line.split(",").drop(2).map(_.toDouble)
 
-      //LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length-args(5).toInt)))
-      LabeledPoint(parts(0), Vectors.dense(parts.slice(1,args(5).toInt-1)++parts.slice(args(5).toInt+1,parts.length)))
+      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length-args(5).toInt)))
+     // LabeledPoint(parts(0), Vectors.dense(parts.slice(1,args(5).toInt-1)++parts.slice(args(5).toInt+1,parts.length)))
 
     }
 
@@ -204,8 +204,10 @@ object TianchiLinear {
 
     //(歌手,日期,实际播放数,预测值)
     val tempValue = evaluateData.map { t => (t._1._1, Math.pow((t._2._2 - t._2._1) / t._2._1, 2.0)) }.reduceByKey(_ + _)
-    val tempValue2 = evaluateData.map { t => (t._1._1, Math.pow((t._2._2 - t._2._1) / t._2._1, 2.0)) }
-    tempValue2.collect().foreach(println)
+   // val tempValue2 = evaluateData.map { t => (t._1._1, Math.pow((t._2._2 - t._2._1) / t._2._1, 2.0)) }
+    evaluateData.filter{t => Math.pow((t._2._2 - t._2._1) / t._2._1, 2.0)>=1}.map{t =>
+      t._1._1+","+t._2._1+","+","+(t._2._2-t._2._1)+","+t._2._1
+    }.saveAsTextFile(args(7))
 
     //(歌手 方差)
     val fangcha = tempValue.map(t => (t._1, Math.sqrt(t._2 / days)))
