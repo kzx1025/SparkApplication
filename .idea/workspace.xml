@@ -6,10 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a2405e3-7029-4d67-b8f8-caaa3cfd9aad" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala" afterPath="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala" />
-    </list>
+    <list default="true" id="4a2405e3-7029-4d67-b8f8-caaa3cfd9aad" name="Default" comment="" />
     <ignored path="SparkApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -1376,12 +1373,12 @@
       <workItem from="1463579773954" duration="301000" />
       <workItem from="1463585167476" duration="34112000" />
       <workItem from="1463990358385" duration="23575000" />
-      <workItem from="1464074662159" duration="1222000" />
+      <workItem from="1464074662159" duration="1282000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="300844000" />
+    <option name="totallyTimeSpent" value="300904000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
