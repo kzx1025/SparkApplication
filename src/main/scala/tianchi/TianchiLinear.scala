@@ -205,9 +205,18 @@ object TianchiLinear {
     //(歌手,日期,实际播放数,预测值)
     val tempValue = evaluateData.map { t => (t._1._1, Math.pow((t._2._2 - t._2._1) / t._2._1, 2.0)) }.reduceByKey(_ + _)
    // val tempValue2 = evaluateData.map { t => (t._1._1, Math.pow((t._2._2 - t._2._1) / t._2._1, 2.0)) }
-    evaluateData.filter{t => Math.pow((t._2._2 - t._2._1) / t._2._1, 2.0)>=1}.map{t =>
+    val evaluateRDD = evaluateData.filter{t => Math.pow((t._2._2 - t._2._1) / t._2._1, 2.0)>=1}.map{t =>
       t._1._1+","+t._2._1+","+","+(t._2._2-t._2._1)+","+t._2._1
-    }.saveAsTextFile(args(7))
+    }
+
+    val writer = new PrintWriter(new File(args(7)))
+    for(record <- evaluateRDD.collect()){
+      writer.write(record)
+      writer.println()
+    }
+
+    writer.close()
+
 
     //(歌手 方差)
     val fangcha = tempValue.map(t => (t._1, Math.sqrt(t._2 / days)))
