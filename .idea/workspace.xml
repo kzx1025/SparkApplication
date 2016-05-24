@@ -7,7 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a2405e3-7029-4d67-b8f8-caaa3cfd9aad" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala" afterPath="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinearResult.scala" afterPath="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinearResult.scala" />
     </list>
     <ignored path="SparkApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -90,8 +92,8 @@
       <file leaf-file-name="TianchiLinear.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.75352114">
-              <caret line="198" column="48" selection-start-line="198" selection-start-column="48" selection-end-line="198" selection-end-column="48" />
+            <state vertical-scroll-proportion="0.40140846">
+              <caret line="193" column="0" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
               <folding>
                 <element signature="e#17#51#0" expanded="true" />
               </folding>
@@ -103,7 +105,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinearResult.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="192" column="4" selection-start-line="192" selection-start-column="4" selection-end-line="198" selection-end-column="18" />
+              <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
               <folding>
                 <element signature="e#17#51#0" expanded="true" />
               </folding>
@@ -1289,12 +1291,12 @@
       <workItem from="1463452697033" duration="29453000" />
       <workItem from="1463579773954" duration="301000" />
       <workItem from="1463585167476" duration="34112000" />
-      <workItem from="1463990358385" duration="17442000" />
+      <workItem from="1463990358385" duration="17983000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="293489000" />
+    <option name="totallyTimeSpent" value="294030000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1864,7 +1866,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinearResult.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="192" column="4" selection-start-line="192" selection-start-column="4" selection-end-line="198" selection-end-column="18" />
+          <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
           <folding>
             <element signature="e#17#51#0" expanded="true" />
           </folding>
@@ -1873,8 +1875,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75352114">
-          <caret line="198" column="48" selection-start-line="198" selection-start-column="48" selection-end-line="198" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.40140846">
+          <caret line="193" column="0" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
           <folding>
             <element signature="e#17#51#0" expanded="true" />
           </folding>

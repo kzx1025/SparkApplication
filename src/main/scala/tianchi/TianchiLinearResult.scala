@@ -95,7 +95,7 @@ object TianchiLinearResult {
 
           val prediction = model.predict(point.features)
 
-          prediction
+          prediction.toInt
 
         }.zip(artistInfo)
 
@@ -110,7 +110,7 @@ object TianchiLinearResult {
 
           val prediction = model.predict(point.features)
 
-          prediction
+          prediction.toInt
 
         }.zip(artistInfo)
 
@@ -123,7 +123,7 @@ object TianchiLinearResult {
         finalTestData.map { point =>
 
           val prediction = model.predict(point.features)
-          prediction
+          prediction.toInt
 
         }.zip(artistInfo)
 
@@ -142,7 +142,7 @@ object TianchiLinearResult {
         finalTestData.map { point =>
 
           val prediction = model.predict(point.features)
-          prediction
+          prediction.toInt
 
         }.zip(artistInfo)
 
@@ -160,7 +160,7 @@ object TianchiLinearResult {
         finalTestData.map { point =>
 
           val prediction = model.predict(point.features)
-          prediction
+          prediction.toInt
 
         }.zip(artistInfo)
 
@@ -177,7 +177,7 @@ object TianchiLinearResult {
         finalTestData.map { point =>
 
           val prediction = model.predict(point.features)
-          prediction
+          prediction.toInt
 
         }.zip(artistInfo)
 
@@ -187,7 +187,7 @@ object TianchiLinearResult {
 
 
 
-    val evaluateData = resultData.asInstanceOf[RDD[(Double, (String, String))]]
+    val evaluateData = resultData.asInstanceOf[RDD[(Int, (String, String))]]
       .map(t => t._2._2+","+ t._2._1+","+t._1 )
 
     val writer = new PrintWriter(new File(args(5)))
