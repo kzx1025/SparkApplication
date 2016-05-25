@@ -85,17 +85,26 @@ object TianchiLinear {
 
     val allData = positiveData
 
-    // val positiveDataNum = positiveData.count()
-    // val negativeDataNum = negativeData.count()
+    val trainingNum = allData.count()
+
+    val wholeData = allData union rawTestData
 
     //标准正规化处理
     val scaler = new StandardScaler(withMean = true, withStd = true)
-    val scaler2 = scaler.fit(allData.map(x => x.features))
-    val scaler3 = scaler.fit(rawTestData.map(x => x.features))
 
-    val finalData = allData.map(x => LabeledPoint(x.label, scaler2.transform(x.features)))
+    val scaler2 = scaler.fit(wholeData.map(x => x.features))
+    val zhengguiData = wholeData.map(x => LabeledPoint(x.label, scaler2.transform(x.features)))
 
-    val finalTestData = rawTestData.map(x => LabeledPoint(x.label, scaler3.transform(x.features)))
+    val finalData = sc.parallelize(zhengguiData.take(trainingNum.toInt))
+    val finalTestData = sc.parallelize(zhengguiData.collect().drop(trainingNum.toInt))
+
+
+   // val scaler2 = scaler.fit(allData.map(x => x.features))
+    //val scaler3 = scaler.fit(rawTestData.map(x => x.features))
+
+    //val finalData = allData.map(x => LabeledPoint(x.label, scaler2.transform(x.features)))
+
+   // val finalTestData = rawTestData.map(x => LabeledPoint(x.label, scaler3.transform(x.features)))
 
 
     val trainingData = finalData
