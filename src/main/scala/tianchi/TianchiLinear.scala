@@ -184,7 +184,7 @@ object TianchiLinear {
       } else if (choice == 5) {
         //随机森林
         val categoricalFeaturesInfo = Map[Int, Int]()
-        val numTrees = 4 // Use more in practice.
+        val numTrees = 20 // Use more in practice.
         val featureSubsetStrategy = "auto" // Let the algorithm choose.
         val impurity = "variance"
         val maxDepth = 8
