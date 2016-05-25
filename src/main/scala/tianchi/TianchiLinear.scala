@@ -96,7 +96,7 @@ object TianchiLinear {
     val finalTrainingData = trainingData.map(t=>t._3)
     val finalTestData = testData.map(t=> t._3)
 
-    val artistInfo = trainingData.map(t=>(t._1,t._2))
+    val artistInfo = testData.map(t=>(t._1,t._2))
 
 
 
