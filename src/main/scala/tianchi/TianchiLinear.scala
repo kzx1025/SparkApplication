@@ -47,7 +47,9 @@ object TianchiLinear {
       }
       println(add.length)
 
-      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length-args(5).toInt)++add.toArray))
+      val features:Array[Double] = parts.slice(1, parts.length-args(5).toInt)++add.toArray
+
+      LabeledPoint(parts(0), Vectors.dense(features))
       //LabeledPoint(parts(0), Vectors.dense(parts.slice(1,args(5).toInt-1)++parts.slice(args(5).toInt+1,parts.length)))
     }
 
@@ -70,7 +72,9 @@ object TianchiLinear {
       }
       println(add.length)
 
-      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length-args(5).toInt)++add.toArray))
+      val features:Array[Double] = parts.slice(1, parts.length-args(5).toInt)++add.toArray
+
+      LabeledPoint(parts(0), Vectors.dense(features))
      // LabeledPoint(parts(0), Vectors.dense(parts.slice(1,args(5).toInt-1)++parts.slice(args(5).toInt+1,parts.length)))
 
     }
