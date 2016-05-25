@@ -91,6 +91,8 @@ object TianchiLinear {
 
     val wholeData = allData union rawTestData
 
+    val wholeNum = wholeData.count()
+
     //标准正规化处理
     val scaler = new StandardScaler(withMean = true, withStd = true)
 
@@ -98,6 +100,7 @@ object TianchiLinear {
     val zhengguiData = wholeData.map(x => LabeledPoint(x.label, scaler2.transform(x.features)))
 
     val finalData = sc.parallelize(zhengguiData.take(trainingNum.toInt))
+
     val finalTestData = sc.parallelize(zhengguiData.collect().drop(trainingNum.toInt))
 
 
@@ -111,10 +114,8 @@ object TianchiLinear {
 
     val trainingData = finalData
 
-    trainingData.collect().foreach(println)
-    finalTestData.collect().foreach(println)
 
-    println("num:"+partitionsNum+","+trainingNum)
+    println("num:"+partitionsNum+","+(wholeNum-trainingNum))
 
     //finalTestData.take(100).foreach(println)
     // testUserData.take(100).foreach(println)
