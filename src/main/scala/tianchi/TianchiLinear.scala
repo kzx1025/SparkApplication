@@ -10,6 +10,7 @@ import org.apache.spark.mllib.tree.configuration.BoostingStrategy
 import org.apache.spark.mllib.tree.{GradientBoostedTrees, RandomForest, DecisionTree}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkContext, SparkConf}
+import scala.collection.mutable.List
 
 /**
   * Created by iceke on 16/5/23.
@@ -38,11 +39,12 @@ object TianchiLinear {
 
     val rawTestData = data5.map { line =>
       val parts = line.split(",").drop(2).map(_.toDouble)
+      val parts2 = line.split(",").drop(3).map(_.toDouble)
 
-      val add:List[Double] = List()
-      for(part1 <- parts){
-        for(part2 <- parts){
-          add.:+(part1*part2)
+      var add:List[Double] = List()
+      for(part1 <- parts2){
+        for(part2 <- parts2){
+          add = add.:+(part1*part2)
         }
       }
       println(add.length)
@@ -63,11 +65,12 @@ object TianchiLinear {
     val positiveData = dataA.map { line =>
 
       val parts = line.split(",").drop(2).map(_.toDouble)
+      val parts2 = line.split(",").drop(3).map(_.toDouble)
 
-      val add:List[Double] = List()
-      for(part1 <- parts){
-        for(part2 <- parts){
-          add.:+(part1*part2)
+      var add:List[Double] = List()
+      for(part1 <- parts2){
+        for(part2 <- parts2){
+          add = add.:+(part1*part2)
         }
       }
       println(add.length)
