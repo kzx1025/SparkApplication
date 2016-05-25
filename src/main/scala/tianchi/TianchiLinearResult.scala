@@ -168,7 +168,7 @@ object TianchiLinearResult {
       else if (choice == 6) {
         //梯度提升树
         val boostingStrategy = BoostingStrategy.defaultParams("Regression")
-        boostingStrategy.setNumIterations(50)
+        boostingStrategy.setNumIterations(88)
         boostingStrategy.getTreeStrategy.setMaxDepth(20)
         //boostingStrategy.getTreeStrategy.setCategoricalFeaturesInfo(Map[Int, Int]())
 

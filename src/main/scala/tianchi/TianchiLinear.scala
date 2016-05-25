@@ -5,7 +5,6 @@ import java.io.{File, PrintWriter}
 import org.apache.spark.mllib.classification.{LogisticRegressionWithSGD, LogisticRegressionWithLBFGS}
 import org.apache.spark.mllib.feature.StandardScaler
 import org.apache.spark.mllib.linalg.Vectors
-import org.apache.spark.mllib.optimization.L1Updater
 import org.apache.spark.mllib.regression._
 import org.apache.spark.mllib.tree.configuration.BoostingStrategy
 import org.apache.spark.mllib.tree.{GradientBoostedTrees, RandomForest, DecisionTree}
@@ -197,7 +196,7 @@ object TianchiLinear {
 
     val evaluateData = resultData.asInstanceOf[RDD[((Int, Double), (String, String))]]
       .map(t => ((t._2._2, t._2._1), (t._1._2, t._1._1)))
-    evaluateData.saveAsTextFile(args(6))
+    //evaluateData.saveAsTextFile(args(6))
 
 
     val days = evaluateData.map { t => (t._1._2, 1) }.reduceByKey(_ + _).count()
@@ -225,11 +224,17 @@ object TianchiLinear {
     //(歌手 权重)
     val artistWeight = evaluateData.map { t => (t._1._1, t._2._1) }.reduceByKey(_ + _).map(t => (t._1, Math.sqrt(t._2)))
 
+    val allScores = artistWeight.map(t => (1,t._2)).reduceByKey(_+_).map(t=>t._2).collect()(0)
+
+
+
     artistWeight.collect().foreach(println)
     val scores = artistWeight.zip(fangcha).filter(t => t._1._1 == t._2._1).map(t => (t._1._1, t._1._2 * (1.0 - t._2._2)))
-      .map(t => (1, t._2)).reduceByKey(_ + _)
+      .map(t => (1, t._2)).reduceByKey(_ + _).map(t=>t._2).collect()(0)
 
-    scores.collect().foreach(println)
+    println("allScores:" + allScores)
+
+    println("bili:"+ (scores/allScores)*100)
 
   }
 
