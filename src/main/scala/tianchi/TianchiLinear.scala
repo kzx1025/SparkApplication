@@ -98,9 +98,9 @@ object TianchiLinear {
     val scaler2 = scaler.fit(wholeData.map(x => x.features))
     val zhengguiData = wholeData.map(x => LabeledPoint(x.label, scaler2.transform(x.features)))
 
-    val finalData = sc.parallelize(zhengguiData.collect().take(trainingNum.toInt))
+    val finalData = sc.parallelize(zhengguiData.take(trainingNum.toInt))
 
-    val finalTestData = sc.parallelize(zhengguiData.collect().drop(trainingNum.toInt))
+    val finalTestData = sc.parallelize(zhengguiData.collect().drop(trainingNum.toInt),artistInfo.partitions.length)
 
 
    // val scaler2 = scaler.fit(allData.map(x => x.features))
