@@ -60,7 +60,6 @@ object TianchiLinear {
       (parts(0), parts(1))
     }
 
-    val partitionsNum = artistInfo.count()
 
 
     val positiveData = dataA.map { line =>
@@ -115,7 +114,7 @@ object TianchiLinear {
     val trainingData = finalData
 
 
-    println("num:"+finalTestData.count()+","+artistInfo.count())
+    println("num:"+finalTestData.partitions.length+","+artistInfo.partitions.length)
 
     //finalTestData.take(100).foreach(println)
     // testUserData.take(100).foreach(println)
