@@ -60,6 +60,8 @@ object TianchiLinear {
       (parts(0), parts(1))
     }
 
+    val partitionsNum = artistInfo.partitions.length
+
 
     val positiveData = dataA.map { line =>
 
@@ -95,8 +97,8 @@ object TianchiLinear {
     val scaler2 = scaler.fit(wholeData.map(x => x.features))
     val zhengguiData = wholeData.map(x => LabeledPoint(x.label, scaler2.transform(x.features)))
 
-    val finalData = sc.parallelize(zhengguiData.take(trainingNum.toInt))
-    val finalTestData = sc.parallelize(zhengguiData.collect().drop(trainingNum.toInt))
+    val finalData = sc.parallelize(zhengguiData.take(trainingNum.toInt),partitionsNum)
+    val finalTestData = sc.parallelize(zhengguiData.collect().drop(trainingNum.toInt),partitionsNum)
 
 
    // val scaler2 = scaler.fit(allData.map(x => x.features))
