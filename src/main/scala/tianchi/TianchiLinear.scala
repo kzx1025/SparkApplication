@@ -115,7 +115,7 @@ object TianchiLinear {
     val trainingData = finalData
 
 
-    println("num:"+partitionsNum+","+(wholeNum-trainingNum))
+    println("num:"+finalTestData.count()+","+artistInfo.count())
 
     //finalTestData.take(100).foreach(println)
     // testUserData.take(100).foreach(println)
