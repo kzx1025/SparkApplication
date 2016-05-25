@@ -36,47 +36,66 @@ object TianchiLinearResult {
 
 
     val rawTestData = data5.map { line =>
+      val parts0 = line.split(",")
       val parts = line.split(",").drop(2).map(_.toDouble)
+      val parts2 = line.split(",").drop(3).map(_.toDouble)
 
-      LabeledPoint(parts(0), Vectors.dense(parts.slice(0, parts.length-args(5).toInt)))
+      var add:List[Double] = List()
+      for(part1 <- parts2){
+        for(part2 <- parts2){
+          add = add.:+(part1*part2)
+        }
+      }
+      println(add.length)
+
+      val features:Array[Double] = parts.slice(0, parts.length-args(5).toInt)
+
+      (parts0(0),parts0(1),LabeledPoint(parts(0), Vectors.dense(features)))
+      //LabeledPoint(parts(0), Vectors.dense(parts.slice(1,args(5).toInt-1)++parts.slice(args(5).toInt+1,parts.length)))
     }
 
 
-    val artistInfo = data5.map { line =>
-      val parts = line.split(",")
-      (parts(0), parts(1))
-    }
 
 
     val positiveData = dataA.map { line =>
-
+      val parts0 = line.split(",")
       val parts = line.split(",").drop(2).map(_.toDouble)
+      val parts2 = line.split(",").drop(3).map(_.toDouble)
 
-      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length-args(5).toInt)))
+      var add:List[Double] = List()
+      for(part1 <- parts2){
+        for(part2 <- parts2){
+          add = add.:+(part1*part2)
+        }
+      }
+      println(add.length)
+
+      val features:Array[Double] = parts.slice(1, parts.length-args(5).toInt)
+
+      (parts0(0),parts0(1),LabeledPoint(parts(0), Vectors.dense(features)))
+      // LabeledPoint(parts(0), Vectors.dense(parts.slice(1,args(5).toInt-1)++parts.slice(args(5).toInt+1,parts.length)))
 
     }
 
+    val trainingNum = positiveData.count()
 
+    val wholeData = positiveData union rawTestData
 
-    val allData = positiveData
-
-    // val positiveDataNum = positiveData.count()
-    // val negativeDataNum = negativeData.count()
 
     //标准正规化处理
     val scaler = new StandardScaler(withMean = true, withStd = true)
-    val scaler2 = scaler.fit(allData.map(x => x.features))
-    val scaler3 = scaler.fit(rawTestData.map(x => x.features))
 
-    val finalData = allData.map(x => LabeledPoint(x.label, scaler2.transform(x.features)))
+    val scaler2 = scaler.fit(wholeData.map(x => x._3.features))
+    val zhengguiData = wholeData.map(x =>(x._1,x._2,LabeledPoint(x._3.label, scaler2.transform(x._3.features))))
 
-    val finalTestData = rawTestData.map(x => LabeledPoint(x.label, scaler3.transform(x.features)))
+    val trainingData = sc.parallelize(zhengguiData.take(trainingNum.toInt))
 
+    val testData = sc.parallelize(zhengguiData.collect().drop(trainingNum.toInt))
 
-    val trainingData = finalData
+    val finalTrainingData = trainingData.map(t=>t._3)
+    val finalTestData = testData.map(t=> t._3)
 
-    trainingData.collect().foreach(println)
-    finalTestData.collect().foreach(println)
+    val artistInfo = testData.map(t=>(t._1,t._2))
 
     //finalTestData.take(100).foreach(println)
     // testUserData.take(100).foreach(println)
@@ -89,7 +108,7 @@ object TianchiLinearResult {
         //线性回归1
         val numIterations = 2000
         val stepSize = 0.00000001
-        val model = LinearRegressionWithSGD.train(trainingData, numIterations)
+        val model = LinearRegressionWithSGD.train(finalTrainingData, numIterations)
         // model.save(sc,args(9))
         finalTestData.map { point =>
 
@@ -103,7 +122,7 @@ object TianchiLinearResult {
         //线性回归2
         val numIterations = 2000
         val stepSize = 0.1
-        val model = LassoWithSGD.train(trainingData, numIterations)
+        val model = LassoWithSGD.train(finalTrainingData, numIterations)
 
 
         finalTestData.map { point =>
@@ -118,7 +137,7 @@ object TianchiLinearResult {
         //线性回归3
         val numIterations = 2000
         val stepSize = 0.1
-        val model = RidgeRegressionWithSGD.train(trainingData, numIterations)
+        val model = RidgeRegressionWithSGD.train(finalTrainingData, numIterations)
 
         finalTestData.map { point =>
 
@@ -135,7 +154,7 @@ object TianchiLinearResult {
         val maxDepth = 10
         val maxBins = 64
 
-        val model = DecisionTree.trainRegressor(trainingData, categoricalFeaturesInfo, impurity,
+        val model = DecisionTree.trainRegressor(finalTrainingData, categoricalFeaturesInfo, impurity,
 
           maxDepth, maxBins)
 
@@ -149,12 +168,12 @@ object TianchiLinearResult {
       } else if (choice == 5) {
         //随机森林
         val categoricalFeaturesInfo = Map[Int, Int]()
-        val numTrees = 4 // Use more in practice.
+        val numTrees = 40 // Use more in practice.
         val featureSubsetStrategy = "auto" // Let the algorithm choose.
         val impurity = "variance"
         val maxDepth = 8
         val maxBins = 50
-        val model = RandomForest.trainRegressor(trainingData, categoricalFeaturesInfo,
+        val model = RandomForest.trainRegressor(finalTrainingData, categoricalFeaturesInfo,
           numTrees, featureSubsetStrategy, impurity, maxDepth, maxBins)
 
         finalTestData.map { point =>
@@ -172,7 +191,7 @@ object TianchiLinearResult {
         boostingStrategy.getTreeStrategy.setMaxDepth(20)
         //boostingStrategy.getTreeStrategy.setCategoricalFeaturesInfo(Map[Int, Int]())
 
-        val model = GradientBoostedTrees.train(trainingData, boostingStrategy)
+        val model = GradientBoostedTrees.train(finalTrainingData, boostingStrategy)
 
         finalTestData.map { point =>
 

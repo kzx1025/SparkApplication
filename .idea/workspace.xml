@@ -8,6 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4a2405e3-7029-4d67-b8f8-caaa3cfd9aad" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinearResult.scala" afterPath="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinearResult.scala" />
     </list>
     <ignored path="SparkApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,11 +86,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TianchiLinear.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TianchiLinear.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7189696">
-              <caret line="186" column="26" selection-start-line="186" selection-start-column="26" selection-end-line="186" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="98" selection-end-column="49" />
               <folding>
                 <element signature="e#17#51#0" expanded="true" />
               </folding>
@@ -145,11 +146,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TianchiLinearResult.scala" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TianchiLinearResult.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinearResult.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+            <state vertical-scroll-proportion="3.880562">
+              <caret line="170" column="25" selection-start-line="170" selection-start-column="25" selection-end-line="170" selection-end-column="25" />
               <folding>
                 <element signature="e#17#51#0" expanded="true" />
               </folding>
@@ -221,13 +222,13 @@
         <option value="$PROJECT_DIR$/src/main/scala/sparkSql/SomeTest.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLR.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/tianchi/TianchiResult.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinearResult.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/tianchi/TianChiProcessYc.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/tianchi/TianChiProcess.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/tianchi/TianChiLineXl.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/tianchi/TianChiLineYc.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/tianchi/TianchiGenData.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinearResult.scala" />
       </list>
     </option>
   </component>
@@ -1204,12 +1205,12 @@
       <workItem from="1463585167476" duration="34112000" />
       <workItem from="1463990358385" duration="23575000" />
       <workItem from="1464074662159" duration="19891000" />
-      <workItem from="1464177371521" duration="1611000" />
+      <workItem from="1464177371521" duration="2422000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="321124000" />
+    <option name="totallyTimeSpent" value="321935000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1718,16 +1719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7189696">
-          <caret line="186" column="26" selection-start-line="186" selection-start-column="26" selection-end-line="186" selection-end-column="26" />
-          <folding>
-            <element signature="e#17#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.10.5-sources.jar!/scala/package.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1748,16 +1739,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiGenData.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
-          <folding>
-            <element signature="e#17#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianChiLineXl.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1768,10 +1749,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinearResult.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiGenData.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+          <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+          <folding>
+            <element signature="e#17#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="98" selection-end-column="49" />
+          <folding>
+            <element signature="e#17#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinearResult.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.880562">
+          <caret line="170" column="25" selection-start-line="170" selection-start-column="25" selection-end-line="170" selection-end-column="25" />
           <folding>
             <element signature="e#17#51#0" expanded="true" />
           </folding>
