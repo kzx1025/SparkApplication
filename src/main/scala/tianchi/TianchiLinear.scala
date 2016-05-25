@@ -10,7 +10,6 @@ import org.apache.spark.mllib.tree.configuration.BoostingStrategy
 import org.apache.spark.mllib.tree.{GradientBoostedTrees, RandomForest, DecisionTree}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkContext, SparkConf}
-import scala.collection.mutable.List
 
 /**
   * Created by iceke on 16/5/23.
