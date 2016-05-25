@@ -7,11 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a2405e3-7029-4d67-b8f8-caaa3cfd9aad" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scala/tianchi/TianChiLineXl.scala" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scala/tianchi/TianChiLineYc.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scala/tianchi/TianchiGenData.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala" afterPath="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinearResult.scala" afterPath="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinearResult.scala" />
     </list>
     <ignored path="SparkApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,17 +83,17 @@
         <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianChi.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="144" column="47" selection-start-line="144" selection-start-column="47" selection-end-line="144" selection-end-column="47" />
+              <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TianchiLinear.scala" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TianchiLinear.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.123931624">
+              <caret line="223" column="67" selection-start-line="223" selection-start-column="67" selection-end-line="223" selection-end-column="67" />
               <folding>
                 <element signature="e#17#51#0" expanded="true" />
               </folding>
@@ -107,9 +105,21 @@
         <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianChiLineYc.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="68" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="55" />
               <folding>
                 <element signature="e#17#51#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TianchiGenData.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiGenData.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+              <folding>
+                <element signature="e#17#50#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -118,8 +128,8 @@
       <file leaf-file-name="TianChiLineXl.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianChiLineXl.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="188" column="25" selection-start-line="188" selection-start-column="25" selection-end-line="188" selection-end-column="25" />
+            <state vertical-scroll-proportion="-13.888889">
+              <caret line="135" column="5" selection-start-line="135" selection-start-column="5" selection-end-line="135" selection-end-column="88" />
               <folding>
                 <element signature="e#17#51#0" expanded="true" />
               </folding>
@@ -127,11 +137,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TianchiLinearResult.scala" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TianchiLinearResult.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinearResult.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47008547">
-              <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
               <folding>
                 <element signature="e#17#51#0" expanded="true" />
               </folding>
@@ -147,98 +157,6 @@
               <folding>
                 <element signature="n#!!doc" expanded="false" />
                 <element signature="e#853#884#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Math.java" pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_75.jdk/Contents/Home/src.zip!/java/lang/Math.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="635" column="73" selection-start-line="635" selection-start-column="73" selection-end-line="635" selection-end-column="73" />
-              <folding>
-                <element signature="e#0#58776#0" expanded="false" />
-                <element signature="e#4339#4340#0" expanded="false" />
-                <element signature="e#4420#4421#0" expanded="false" />
-                <element signature="e#4847#4848#0" expanded="false" />
-                <element signature="e#4928#4929#0" expanded="false" />
-                <element signature="e#5463#5464#0" expanded="false" />
-                <element signature="e#5544#5545#0" expanded="false" />
-                <element signature="e#6190#6191#0" expanded="false" />
-                <element signature="e#6272#6273#0" expanded="false" />
-                <element signature="e#6807#6808#0" expanded="false" />
-                <element signature="e#6889#6890#0" expanded="false" />
-                <element signature="e#7497#7498#0" expanded="false" />
-                <element signature="e#7579#7580#0" expanded="false" />
-                <element signature="e#7988#7989#0" expanded="false" />
-                <element signature="e#8030#8031#0" expanded="false" />
-                <element signature="e#8543#8544#0" expanded="false" />
-                <element signature="e#8585#8586#0" expanded="false" />
-                <element signature="e#9305#9306#0" expanded="false" />
-                <element signature="e#9386#9387#0" expanded="false" />
-                <element signature="e#10091#10092#0" expanded="false" />
-                <element signature="e#10172#10173#0" expanded="false" />
-                <element signature="e#10971#10972#0" expanded="false" />
-                <element signature="e#11054#11055#0" expanded="false" />
-                <element signature="e#13045#13046#0" expanded="false" />
-                <element signature="e#13086#13087#0" expanded="false" />
-                <element signature="e#15310#15311#0" expanded="false" />
-                <element signature="e#15392#15393#0" expanded="false" />
-                <element signature="e#16153#16154#0" expanded="false" />
-                <element signature="e#16236#16237#0" expanded="false" />
-                <element signature="e#17028#17029#0" expanded="false" />
-                <element signature="e#17110#17111#0" expanded="false" />
-                <element signature="e#29430#29431#0" expanded="false" />
-                <element signature="e#29469#29470#0" expanded="false" />
-                <element signature="e#30074#30075#0" expanded="false" />
-                <element signature="e#30113#30114#0" expanded="false" />
-                <element signature="e#30917#30918#0" expanded="false" />
-                <element signature="e#30966#30967#0" expanded="false" />
-                <element signature="e#31775#31776#0" expanded="false" />
-                <element signature="e#31824#31825#0" expanded="false" />
-                <element signature="e#32246#32247#0" expanded="false" />
-                <element signature="e#32285#32286#0" expanded="false" />
-                <element signature="e#32708#32709#0" expanded="false" />
-                <element signature="e#32747#32748#0" expanded="false" />
-                <element signature="e#35181#35182#0" expanded="false" />
-                <element signature="e#35220#35221#0" expanded="false" />
-                <element signature="e#35644#35645#0" expanded="false" />
-                <element signature="e#35683#35684#0" expanded="false" />
-                <element signature="e#38530#38531#0" expanded="false" />
-                <element signature="e#38576#38577#0" expanded="false" />
-                <element signature="e#39560#39561#0" expanded="false" />
-                <element signature="e#39606#39607#0" expanded="false" />
-                <element signature="e#40261#40262#0" expanded="false" />
-                <element signature="e#40310#40311#0" expanded="false" />
-                <element signature="e#40965#40966#0" expanded="false" />
-                <element signature="e#41014#41015#0" expanded="false" />
-                <element signature="e#41901#41902#0" expanded="false" />
-                <element signature="e#41942#41943#0" expanded="false" />
-                <element signature="e#42771#42772#0" expanded="false" />
-                <element signature="e#42812#42813#0" expanded="false" />
-                <element signature="e#44253#44254#0" expanded="false" />
-                <element signature="e#44294#44295#0" expanded="false" />
-                <element signature="e#45134#45135#0" expanded="false" />
-                <element signature="e#45179#45180#0" expanded="false" />
-                <element signature="e#46525#46526#0" expanded="false" />
-                <element signature="e#46567#46568#0" expanded="false" />
-                <element signature="e#47652#47653#0" expanded="false" />
-                <element signature="e#47694#47695#0" expanded="false" />
-                <element signature="e#49393#49394#0" expanded="false" />
-                <element signature="e#49461#49462#0" expanded="false" />
-                <element signature="e#49982#49983#0" expanded="false" />
-                <element signature="e#50036#50037#0" expanded="false" />
-                <element signature="e#50562#50563#0" expanded="false" />
-                <element signature="e#50616#50617#0" expanded="false" />
-                <element signature="e#54859#54860#0" expanded="false" />
-                <element signature="e#54908#54909#0" expanded="false" />
-                <element signature="e#55754#55755#0" expanded="false" />
-                <element signature="e#55803#55804#0" expanded="false" />
-                <element signature="e#57230#57231#0" expanded="false" />
-                <element signature="e#57291#57292#0" expanded="false" />
-                <element signature="e#58711#58712#0" expanded="false" />
-                <element signature="e#58772#58773#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -264,7 +182,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/RectTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/GetMemory.java" />
         <option value="$PROJECT_DIR$/src/main/java/Quadtree.java" />
         <option value="$PROJECT_DIR$/src/main/java/MaxGift.java" />
@@ -313,8 +230,9 @@
         <option value="$PROJECT_DIR$/src/main/scala/tianchi/TianChiProcessYc.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/tianchi/TianChiProcess.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/tianchi/TianChiLineXl.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/tianchi/TianChiLineYc.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/tianchi/TianchiGenData.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala" />
       </list>
     </option>
   </component>
@@ -666,6 +584,9 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="sparkapplication" />
       <envs />
+      <RunnerSettings RunnerId="JProfiler">
+        <option name="WINDOW" value="false" />
+      </RunnerSettings>
       <method />
     </configuration>
     <configuration default="false" name="TianChiLineYc" type="Application" factoryName="Application" temporary="true">
@@ -1287,12 +1208,12 @@
       <workItem from="1463579773954" duration="301000" />
       <workItem from="1463585167476" duration="34112000" />
       <workItem from="1463990358385" duration="23575000" />
-      <workItem from="1464074662159" duration="7239000" />
+      <workItem from="1464074662159" duration="12799000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="306861000" />
+    <option name="totallyTimeSpent" value="312421000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1308,7 +1229,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34657535" sideWeight="0.4951535" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37978142" sideWeight="0.49676898" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37945205" sideWeight="0.49676898" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15266559" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1469,13 +1390,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/paper/spark-1.6.1/graphx/src/main/scala/org/apache/spark/graphx/GraphOps.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="69" column="14" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/followers.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1873,14 +1787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianChi.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="144" column="47" selection-start-line="144" selection-start-column="47" selection-end-line="144" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianChiTwo.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1905,20 +1811,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianChiLineXl.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinearResult.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="188" column="25" selection-start-line="188" selection-start-column="25" selection-end-line="188" selection-end-column="25" />
-          <folding>
-            <element signature="e#17#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
           <folding>
             <element signature="e#17#51#0" expanded="true" />
           </folding>
@@ -1928,17 +1824,45 @@
     <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianChiLineYc.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="68" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="55" />
           <folding>
             <element signature="e#17#51#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinearResult.scala">
+    <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianChiLineXl.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47008547">
-          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+        <state vertical-scroll-proportion="-13.888889">
+          <caret line="135" column="5" selection-start-line="135" selection-start-column="5" selection-end-line="135" selection-end-column="88" />
+          <folding>
+            <element signature="e#17#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiGenData.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+          <folding>
+            <element signature="e#17#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianChi.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/tianchi/TianchiLinear.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.123931624">
+          <caret line="223" column="67" selection-start-line="223" selection-start-column="67" selection-end-line="223" selection-end-column="67" />
           <folding>
             <element signature="e#17#51#0" expanded="true" />
           </folding>

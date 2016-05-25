@@ -39,7 +39,15 @@ object TianchiLinear {
     val rawTestData = data5.map { line =>
       val parts = line.split(",").drop(2).map(_.toDouble)
 
-      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length-args(5).toInt)))
+      val add:List[Double] = List()
+      for(part1 <- parts){
+        for(part2 <- parts){
+          add.:+(part1*part2)
+        }
+      }
+      println(add.length)
+
+      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length-args(5).toInt)++add.toArray))
       //LabeledPoint(parts(0), Vectors.dense(parts.slice(1,args(5).toInt-1)++parts.slice(args(5).toInt+1,parts.length)))
     }
 
@@ -54,7 +62,15 @@ object TianchiLinear {
 
       val parts = line.split(",").drop(2).map(_.toDouble)
 
-      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length-args(5).toInt)))
+      val add:List[Double] = List()
+      for(part1 <- parts){
+        for(part2 <- parts){
+          add.:+(part1*part2)
+        }
+      }
+      println(add.length)
+
+      LabeledPoint(parts(0), Vectors.dense(parts.slice(1, parts.length-args(5).toInt)++add.toArray))
      // LabeledPoint(parts(0), Vectors.dense(parts.slice(1,args(5).toInt-1)++parts.slice(args(5).toInt+1,parts.length)))
 
     }
